@@ -8,28 +8,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Aspire.OnlineShopping.Entity.Product;
-import com.Aspire.OnlineShopping.repository.ProductInterface;
+import com.Aspire.OnlineShopping.Entity.Customer;
+import com.Aspire.OnlineShopping.repository.CustomInterface;
 
 @RestController
-public class ProductController {
+public class CustomerController {
 
 	@Autowired
-private	ProductInterface pro;
-
-	@PostMapping("product add")
-	public String productAdd(@RequestBody Product p)
-	{
-		pro.save(p);
-	return "Product add sucussfully";
+	private CustomInterface obj;
 	
+	@PostMapping("/addcust")
+	public String Customeradd(@RequestBody Customer c)
+	{
+		obj.save(c);
+		return "customer add successfully";
+		
 	}
 	
-	@GetMapping("/getproduct")
-	public List<Product> getAllProduct()
+	@GetMapping("/getcust")
+	public List<Customer> getAllCust()
 	{
-		return pro.findAll();
+		return obj.findAll();
 		
 		
 	}
+	
 }
